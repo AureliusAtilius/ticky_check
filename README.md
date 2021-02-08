@@ -1,0 +1,2 @@
+# ticky_check
+This script opens a log file in the current directory and parses through the logs, sorting the information into two .csv files. The first .csv file is called "error_message.csv", which is a report of all errors present in the log and their frequency, sorted by most freqeuent. The second .csv file is called "user_statistics.csv", which generates a report of all users and the amount of INFO and ERROR logs they generated.
