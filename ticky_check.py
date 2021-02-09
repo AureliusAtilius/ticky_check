@@ -4,17 +4,20 @@ import sys
 import re
 import csv
 
+#usage: ./ticky_check.py FILENAME
+
 error = {}
 per_user = {}
-#edit "syslog.log" with the desired filepath/file
-with open("syslog.log","r") as log:
+log_file= sys.argv[1]
+
+with open(log_file,"r") as log:
     for line in log.readlines():
         line = line.strip()
         log_type = (re.search(r"(INFO|ERROR)",line)).group(1)
         username = (re.search(r"\((.*)\)",line)).group(1)
         log_message = (re.search(r"(INFO|ERROR) ([\w ']*) ",line)).group(2)
-        bad_names = ["jackowens","kirknixon","mai.hendrix","mcintosh","mdouglas","montanap","noel","nonummy","oren","rr.robinson","sri","xlg"]
-        
+
+
         if username not in per_user:
             log_count = {'INFO': 0, 'ERROR': 0}
             per_user[username] = log_count
